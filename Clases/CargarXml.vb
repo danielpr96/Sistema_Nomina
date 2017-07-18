@@ -8,15 +8,13 @@ Public Class CargarXml
         Dim root As XmlNode = document.DocumentElement
         Dim xmlManager = New XmlNamespaceManager(document.NameTable)
         xmlManager.AddNamespace("cfdi", "http://www.sat.gob.mx/cfd/3")
-
-
     End Sub
 
     Public Sub cargarEmisor()
         Dim nombre As String = ""
         Dim rfc As String = ""
         Dim document As XmlDocument = New XmlDocument
-        document.Load("C:\Users\Asanchez\Documents\xml\D1P400E2017P23_F00001_0001002867.xml")
+        document.Load("C:\Users\Daniel\Downloads\xmles\XMLFILE.xml")
         Dim root As XmlNode = document.DocumentElement
         Dim xmlManager = New XmlNamespaceManager(document.NameTable)
         xmlManager.AddNamespace("cfdi", "http://www.sat.gob.mx/cfd/3")
@@ -38,7 +36,7 @@ Public Class CargarXml
         Dim nombre As String = ""
         Dim rfc As String = ""
         Dim document As XmlDocument = New XmlDocument
-        document.Load("C:\Users\Asanchez\Documents\xml\D1P400E2017P23_F00001_0001002867.xml")
+        document.Load("C:\Users\Daniel\Downloads\xmles\XMLFILE.xml")
         Dim root As XmlNode = document.DocumentElement
         Dim xmlManager = New XmlNamespaceManager(document.NameTable)
         xmlManager.AddNamespace("cfdi", "http://www.sat.gob.mx/cfd/3")
@@ -58,7 +56,7 @@ Public Class CargarXml
 
     Public Sub cargarConceptos()
         Dim xmlManager As XNamespace = "http://www.sat.gob.mx/cfd/3"
-        Dim archivoXml As XDocument = XDocument.Load("C:\Users\Asanchez\Documents\xml\D1P400E2017P23_F00001_0001002867.xml")
+        Dim archivoXml As XDocument = XDocument.Load("C:\Users\Daniel\Downloads\xmles\XMLFILE.xml")
         Dim cont As Integer = 0
         Try
             For Each concepto As XElement In archivoXml.Descendants(xmlManager + "Comprobante").Elements(xmlManager + "Conceptos").Elements()
@@ -86,7 +84,7 @@ Public Class CargarXml
         Dim noCertificadoSat As String = ""
         Dim selloSat As String = ""
         Dim document As XmlDocument = New XmlDocument
-        document.Load("C:\Users\Asanchez\Documents\xml\D1P400E2017P23_F00001_0001002867.xml")
+        document.Load("C:\Users\Daniel\Downloads\xmles\XMLFILE.xml")
         Dim root As XmlNode = document.DocumentElement
         Dim xmlManager = New XmlNamespaceManager(document.NameTable)
         xmlManager.AddNamespace("cfdi", "http://www.sat.gob.mx/cfd/3")
@@ -136,7 +134,7 @@ Public Class CargarXml
         Dim totalPercepciones As Decimal = 0.0
         Dim totalDeducciones As Decimal = 0.0
         Dim document As XmlDocument = New XmlDocument
-        document.Load("C:\Users\Asanchez\Documents\xml\D1P400E2017P23_F00001_0001002867.xml")
+        document.Load("C:\Users\Daniel\Downloads\xmles\XMLFILE.xml")
         Dim root As XmlNode = document.DocumentElement
         Dim xmlManager = New XmlNamespaceManager(document.NameTable)
         xmlManager.AddNamespace("cfdi", "http://www.sat.gob.mx/cfd/3")
@@ -195,7 +193,7 @@ Public Class CargarXml
     Public Sub nominaEmisor()
         Dim registroPatronal As String = ""
         Dim document As XmlDocument = New XmlDocument
-        document.Load("C:\Users\Asanchez\Documents\xml\D1P400E2017P23_F00001_0001002867.xml")
+        document.Load("C:\Users\Daniel\Downloads\xmles\XMLFILE.xml")
         Dim root As XmlNode = document.DocumentElement
         Dim xmlManager = New XmlNamespaceManager(document.NameTable)
         xmlManager.AddNamespace("cfdi", "http://www.sat.gob.mx/cfd/3")
@@ -227,7 +225,7 @@ Public Class CargarXml
         Dim salarioDiarioIntegrado As Decimal = 0.0
         Dim claveEntFed As String = ""
         Dim document As XmlDocument = New XmlDocument
-        document.Load("C:\Users\Asanchez\Documents\xml\D1P400E2017P23_F00001_0001002867.xml")
+        document.Load("C:\Users\Daniel\Downloads\xmles\XMLFILE.xml")
         Dim root As XmlNode = document.DocumentElement
         Dim xmlManager = New XmlNamespaceManager(document.NameTable)
         xmlManager.AddNamespace("cfdi", "http://www.sat.gob.mx/cfd/3")
@@ -276,7 +274,7 @@ Public Class CargarXml
         Dim totalGravado As Decimal = 0.0
         Dim totalExento As Decimal = 0.0
         Dim document As XmlDocument = New XmlDocument
-        document.Load("C:\Users\Asanchez\Documents\xml\D1P400E2017P23_F00001_0001002867.xml")
+        document.Load("C:\Users\Daniel\Downloads\xmles\XMLFILE.xml")
         Dim root As XmlNode = document.DocumentElement
         Dim xmlManager = New XmlNamespaceManager(document.NameTable)
         xmlManager.AddNamespace("cfdi", "http://www.sat.gob.mx/cfd/3")
@@ -292,7 +290,7 @@ Public Class CargarXml
     Public Sub percepcion()
         Dim xmlManager As XNamespace = "http://www.sat.gob.mx/cfd/3"
         Dim xmlNomina As XNamespace = "http://www.sat.gob.mx/nomina12"
-        Dim archivoXml As XDocument = XDocument.Load("C:\Users\Asanchez\Documents\xml\D1P400E2017P23_F00001_0001002867.xml")
+        Dim archivoXml As XDocument = XDocument.Load("C:\Users\Daniel\Downloads\xmles\XMLFILE.xml")
         Dim cont As Integer = 0
         For Each per As XElement In archivoXml.Descendants(xmlManager + "Comprobante").Elements(xmlManager + "Complemento").Elements(xmlNomina + "Nomina").Elements(xmlNomina + "Percepciones").Elements(xmlNomina + "Percepcion")
             Dim tipoPercepcion As String = per.Attribute("TipoPercepcion").Value
@@ -310,7 +308,7 @@ Public Class CargarXml
         Dim totalOtrasDeducciones As Decimal = 0.0
         Dim totalImpuestosRetenidos As Decimal = 0.0
         Dim document As XmlDocument = New XmlDocument
-        document.Load("C:\Users\Asanchez\Documents\xml\D1P400E2017P23_F00001_0001002867.xml")
+        document.Load("C:\Users\Daniel\Downloads\xmles\XMLFILE.xml")
         Dim root As XmlNode = document.DocumentElement
         Dim xmlManager = New XmlNamespaceManager(document.NameTable)
         xmlManager.AddNamespace("cfdi", "http://www.sat.gob.mx/cfd/3")
@@ -324,7 +322,7 @@ Public Class CargarXml
     Public Sub deduccion()
         Dim xmlManager As XNamespace = "http://www.sat.gob.mx/cfd/3"
         Dim xmlNomina As XNamespace = "http://www.sat.gob.mx/nomina12"
-        Dim archivoXml As XDocument = XDocument.Load("C:\Users\Asanchez\Documents\xml\D1P400E2017P23_F00001_0001002867.xml")
+        Dim archivoXml As XDocument = XDocument.Load("C:\Users\Daniel\Downloads\xmles\XMLFILE.xml")
         Dim cont As Integer = 0
         For Each ded As XElement In archivoXml.Descendants(xmlManager + "Comprobante").Elements(xmlManager + "Complemento").Elements(xmlNomina + "Nomina").Elements(xmlNomina + "Deducciones").Elements(xmlNomina + "Deduccion")
             Dim tipoDeduccion As String = ded.Attribute("TipoDeduccion").Value

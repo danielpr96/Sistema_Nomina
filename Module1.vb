@@ -1,6 +1,8 @@
 ﻿Module Module1
 
     Sub Main()
+        Dim monitorear As MonitorFile = New MonitorFile
+        monitorear.monitorear()
         Dim cargarXml As CargarXml = New CargarXml
         cargarXml.cargarEmisor()
         cargarXml.cargarReceptor()
