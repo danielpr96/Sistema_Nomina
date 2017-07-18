@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\CargarXml.vb" />
+    <Compile Include="Clases\conexion.vb" />
     <Compile Include="Clases\guardar.vb" />
     <Compile Include="Clases\MonitorFile.vb" />
     <Compile Include="Module1.vb" />
@@ -86,6 +87,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Procedimientos\procedimientos.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
