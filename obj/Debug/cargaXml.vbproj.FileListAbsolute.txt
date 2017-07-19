@@ -27,3 +27,13 @@ C:\Users\Daniel\Documents\Visual Studio 2015\Projects\cargaXml\cargaXml\obj\Debu
 C:\Users\Daniel\Documents\Visual Studio 2015\Projects\cargaXml\cargaXml\bin\Debug\cargaXml.exe
 C:\Users\Daniel\Documents\Visual Studio 2015\Projects\cargaXml\cargaXml\bin\Debug\cargaXml.pdb
 C:\Users\Daniel\Documents\Visual Studio 2015\Projects\cargaXml\cargaXml\bin\Debug\cargaXml.xml
+C:\Users\Asanchez\Documents\Visual Studio 2015\Projects\XML_Nomina-master\bin\Debug\cargaXml.exe.config
+C:\Users\Asanchez\Documents\Visual Studio 2015\Projects\XML_Nomina-master\obj\Debug\cargaXml.exe
+C:\Users\Asanchez\Documents\Visual Studio 2015\Projects\XML_Nomina-master\obj\Debug\cargaXml.xml
+C:\Users\Asanchez\Documents\Visual Studio 2015\Projects\XML_Nomina-master\obj\Debug\cargaXml.pdb
+C:\Users\Asanchez\Documents\Visual Studio 2015\Projects\XML_Nomina-master\bin\Debug\cargaXml.exe
+C:\Users\Asanchez\Documents\Visual Studio 2015\Projects\XML_Nomina-master\bin\Debug\cargaXml.pdb
+C:\Users\Asanchez\Documents\Visual Studio 2015\Projects\XML_Nomina-master\bin\Debug\cargaXml.xml
+C:\Users\Asanchez\Documents\Visual Studio 2015\Projects\XML_Nomina-master\obj\Debug\cargaXml.vbprojResolveAssemblyReference.cache
+C:\Users\Asanchez\Documents\Visual Studio 2015\Projects\XML_Nomina-master\obj\Debug\cargaXml.Resources.resources
+C:\Users\Asanchez\Documents\Visual Studio 2015\Projects\XML_Nomina-master\obj\Debug\cargaXml.vbproj.GenerateResource.Cache
