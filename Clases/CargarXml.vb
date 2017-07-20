@@ -2,19 +2,23 @@
 Imports System.IO
 Public Class CargarXml
 
-    Public Sub cargarComprobante()
+    Public Sub cargarComprobante(ByVal ruta As String, ByVal fecha As String, ByVal nombre As String)
+        'Public Sub cargarComprobante(ByVal ruta As String, ByVal nombre As String)
         Dim document As XmlDocument = New XmlDocument
-        document.Load("")
+        document.Load(ruta + fecha + "\" + nombre)
+        'document.Load(ruta + nombre)
         Dim root As XmlNode = document.DocumentElement
         Dim xmlManager = New XmlNamespaceManager(document.NameTable)
         xmlManager.AddNamespace("cfdi", "http://www.sat.gob.mx/cfd/3")
     End Sub
 
-    Public Sub cargarEmisor()
+    Public Sub cargarEmisor(ByVal ruta As String, ByVal fecha As String, ByVal name As String)
+        'Public Sub cargarEmisor(ByVal ruta As String, ByVal name As String)
         Dim nombre As String = ""
         Dim rfc As String = ""
         Dim document As XmlDocument = New XmlDocument
-        document.Load("C:\Users\Daniel\Downloads\xmles\XMLFILE.xml")
+        document.Load(ruta + fecha + "\" + name)
+        'document.Load(ruta + name)
         Dim root As XmlNode = document.DocumentElement
         Dim xmlManager = New XmlNamespaceManager(document.NameTable)
         xmlManager.AddNamespace("cfdi", "http://www.sat.gob.mx/cfd/3")
@@ -32,11 +36,13 @@ Public Class CargarXml
         Console.WriteLine(rfc)
     End Sub
 
-    Public Sub cargarReceptor()
+    Public Sub cargarReceptor(ByVal ruta As String, ByVal fecha As String, ByVal name As String)
+        'Public Sub cargarReceptor(ByVal ruta As String, ByVal name As String)
         Dim nombre As String = ""
         Dim rfc As String = ""
         Dim document As XmlDocument = New XmlDocument
-        document.Load("C:\Users\Daniel\Downloads\xmles\XMLFILE.xml")
+        document.Load(ruta + fecha + "\" + name)
+        'document.Load(ruta + name)
         Dim root As XmlNode = document.DocumentElement
         Dim xmlManager = New XmlNamespaceManager(document.NameTable)
         xmlManager.AddNamespace("cfdi", "http://www.sat.gob.mx/cfd/3")
@@ -54,10 +60,12 @@ Public Class CargarXml
         Console.WriteLine(rfc)
     End Sub
 
-    Public Sub cargarConceptos()
+    Public Sub cargarConceptos(ByVal ruta As String, ByVal fecha As String, ByVal nombre As String)
+        'Public Sub cargarConceptos(ByVal ruta As String, ByVal nombre As String)
         Dim xmlManager As XNamespace = "http://www.sat.gob.mx/cfd/3"
-        Dim archivoXml As XDocument = XDocument.Load("C:\Users\Daniel\Downloads\xmles\XMLFILE.xml")
-        Dim cont As Integer = 0
+        Dim archivoXml As XDocument = XDocument.Load(ruta + fecha + "\" + nombre)
+    'Dim archivoXml As XDocument = XDocument.Load(ruta + nombre)
+    Dim cont As Integer = 0
         Try
             For Each concepto As XElement In archivoXml.Descendants(xmlManager + "Comprobante").Elements(xmlManager + "Conceptos").Elements()
                 Dim cantidad As String = concepto.Attribute("cantidad").Value
@@ -77,55 +85,58 @@ Public Class CargarXml
 
     End Sub
 
-    Public Sub cargarTimbreFiscal()
-        Dim uuid As String = ""
-        Dim fechaTimbrado As DateTime
-        Dim selloCFD As String = ""
-        Dim noCertificadoSat As String = ""
-        Dim selloSat As String = ""
-        Dim document As XmlDocument = New XmlDocument
-        document.Load("C:\Users\Daniel\Downloads\xmles\XMLFILE.xml")
-        Dim root As XmlNode = document.DocumentElement
-        Dim xmlManager = New XmlNamespaceManager(document.NameTable)
-        xmlManager.AddNamespace("cfdi", "http://www.sat.gob.mx/cfd/3")
-        xmlManager.AddNamespace("tfd", "http://www.sat.gob.mx/TimbreFiscalDigital")
-        Try
-            uuid = document.SelectSingleNode("cfdi:Comprobante /cfdi:Complemento /tfd:TimbreFiscalDigital", xmlManager).Attributes("UUID").Value
-        Catch ex As Exception
-            MsgBox("Error de lectura de uuid")
-        End Try
-        Try
-            fechaTimbrado = document.SelectSingleNode("cfdi:Comprobante /cfdi:Complemento /tfd:TimbreFiscalDigital", xmlManager).Attributes("FechaTimbrado").Value
+    'Public Sub cargarTimbreFiscal(ByVal ruta As String, ByVal fecha As String, ByVal nombre As String)
+    'Public Sub cargarTimbreFiscal(ByVal ruta As String, ByVal nombre As String)
+    '    Dim uuid As String = ""
+    '    Dim fechaTimbrado As DateTime
+    '    Dim selloCFD As String = ""
+    '    Dim noCertificadoSat As String = ""
+    '    Dim selloSat As String = ""
+    '    Dim document As XmlDocument = New XmlDocument
+    '    document.Load(ruta + fecha + "\" + nombre)
+    '    document.Load(ruta + nombre)
+    '    Dim root As XmlNode = document.DocumentElement
+    '    Dim xmlManager = New XmlNamespaceManager(document.NameTable)
+    '    xmlManager.AddNamespace("cfdi", "http://www.sat.gob.mx/cfd/3")
+    '    xmlManager.AddNamespace("tfd", "http://www.sat.gob.mx/TimbreFiscalDigital")
+    '    Try
+    '        uuid = document.SelectSingleNode("cfdi:Comprobante /cfdi:Complemento /tfd:TimbreFiscalDigital", xmlManager).Attributes("UUID").Value
+    '    Catch ex As Exception
+    '        MsgBox("Error de lectura de uuid")
+    '    End Try
+    '    Try
+    '        fechaTimbrado = document.SelectSingleNode("cfdi:Comprobante /cfdi:Complemento /tfd:TimbreFiscalDigital", xmlManager).Attributes("FechaTimbrado").Value
 
-        Catch ex As Exception
-            MsgBox("Error de lectura de fecha de timbrado")
-        End Try
-        Try
-            selloCFD = document.SelectSingleNode("cfdi:Comprobante /cfdi:Complemento /tfd:TimbreFiscalDigital", xmlManager).Attributes("selloCFD").Value
+    '    Catch ex As Exception
+    '        MsgBox("Error de lectura de fecha de timbrado")
+    '    End Try
+    '    Try
+    '        selloCFD = document.SelectSingleNode("cfdi:Comprobante /cfdi:Complemento /tfd:TimbreFiscalDigital", xmlManager).Attributes("selloCFD").Value
 
-        Catch ex As Exception
-            MsgBox("Error de lectura de selloCFD")
-        End Try
-        Try
-            noCertificadoSat = document.SelectSingleNode("cfdi:Comprobante /cfdi:Complemento /tfd:TimbreFiscalDigital", xmlManager).Attributes("noCertificadoSAT").Value
+    '    Catch ex As Exception
+    '        MsgBox("Error de lectura de selloCFD")
+    '    End Try
+    '    Try
+    '        noCertificadoSat = document.SelectSingleNode("cfdi:Comprobante /cfdi:Complemento /tfd:TimbreFiscalDigital", xmlManager).Attributes("noCertificadoSAT").Value
 
-        Catch ex As Exception
-            MsgBox("Error de lectura de noCertificadoSat")
-        End Try
-        Try
-            selloSat = document.SelectSingleNode("cfdi:Comprobante /cfdi:Complemento /tfd:TimbreFiscalDigital", xmlManager).Attributes("selloSAT").Value
+    '    Catch ex As Exception
+    '        MsgBox("Error de lectura de noCertificadoSat")
+    '    End Try
+    '    Try
+    '        selloSat = document.SelectSingleNode("cfdi:Comprobante /cfdi:Complemento /tfd:TimbreFiscalDigital", xmlManager).Attributes("selloSAT").Value
 
-        Catch ex As Exception
-            MsgBox("Error de lectura de selloSat")
-        End Try
-        Console.WriteLine(uuid)
-        Console.WriteLine(fechaTimbrado)
-        Console.WriteLine(selloCFD)
-        Console.WriteLine(noCertificadoSat)
-        Console.WriteLine(selloSat)
-    End Sub
+    '    Catch ex As Exception
+    '        MsgBox("Error de lectura de selloSat")
+    '    End Try
+    '    Console.WriteLine(uuid)
+    '    Console.WriteLine(fechaTimbrado)
+    '    Console.WriteLine(selloCFD)
+    '    Console.WriteLine(noCertificadoSat)
+    '    Console.WriteLine(selloSat)
+    'End Sub
 
-    Public Sub cargarNomina()
+    Public Sub cargarNomina(ByVal ruta As String, ByVal fecha As String, ByVal nombre As String)
+        'Public Sub cargarNomina(ByVal ruta As String, ByVal nombre As String)
         Dim tipoNomina As String = ""
         Dim fechaPago As Date
         Dim fechaInicialPago As Date
@@ -134,7 +145,8 @@ Public Class CargarXml
         Dim totalPercepciones As Decimal = 0.0
         Dim totalDeducciones As Decimal = 0.0
         Dim document As XmlDocument = New XmlDocument
-        document.Load("C:\Users\Daniel\Downloads\xmles\XMLFILE.xml")
+        document.Load(ruta + fecha + "\" + nombre)
+        'document.Load(ruta + nombre)
         Dim root As XmlNode = document.DocumentElement
         Dim xmlManager = New XmlNamespaceManager(document.NameTable)
         xmlManager.AddNamespace("cfdi", "http://www.sat.gob.mx/cfd/3")
@@ -190,10 +202,12 @@ Public Class CargarXml
         Console.WriteLine(totalDeducciones)
     End Sub
 
-    Public Sub nominaEmisor()
+    Public Sub nominaEmisor(ByVal ruta As String, ByVal fecha As String, ByVal nombre As String)
+        'Public Sub nominaEmisor(ByVal ruta As String, ByVal nombre As String)
         Dim registroPatronal As String = ""
         Dim document As XmlDocument = New XmlDocument
-        document.Load("C:\Users\Daniel\Downloads\xmles\XMLFILE.xml")
+        document.Load(ruta + fecha + "\" + nombre)
+        'document.Load(ruta + nombre)
         Dim root As XmlNode = document.DocumentElement
         Dim xmlManager = New XmlNamespaceManager(document.NameTable)
         xmlManager.AddNamespace("cfdi", "http://www.sat.gob.mx/cfd/3")
@@ -207,7 +221,8 @@ Public Class CargarXml
         Console.WriteLine(registroPatronal)
     End Sub
 
-    Public Sub nominaReceptor()
+    Public Sub nominaReceptor(ByVal ruta As String, ByVal fecha As String, ByVal nombre As String)
+        'Public Sub nominaReceptor(ByVal ruta As String, ByVal nombre As String)
         Dim curp As String = ""
         Dim numSeguroSocial As String = ""
         Dim fechaInicioRelLaboral As Date
@@ -225,7 +240,8 @@ Public Class CargarXml
         Dim salarioDiarioIntegrado As Decimal = 0.0
         Dim claveEntFed As String = ""
         Dim document As XmlDocument = New XmlDocument
-        document.Load("C:\Users\Daniel\Downloads\xmles\XMLFILE.xml")
+        document.Load(ruta + fecha + "\" + nombre)
+        'document.Load(ruta + nombre)
         Dim root As XmlNode = document.DocumentElement
         Dim xmlManager = New XmlNamespaceManager(document.NameTable)
         xmlManager.AddNamespace("cfdi", "http://www.sat.gob.mx/cfd/3")
@@ -269,12 +285,14 @@ Public Class CargarXml
         Console.WriteLine(claveEntFed)
     End Sub
 
-    Public Sub percepciones()
+    Public Sub percepciones(ByVal ruta As String, ByVal fecha As String, ByVal nombre As String)
+        'Public Sub percepciones(ByVal ruta As String, ByVal nombre As String)
         Dim totalSueldos As Decimal = 0.0
         Dim totalGravado As Decimal = 0.0
         Dim totalExento As Decimal = 0.0
         Dim document As XmlDocument = New XmlDocument
-        document.Load("C:\Users\Daniel\Downloads\xmles\XMLFILE.xml")
+        document.Load(ruta + fecha + "\" + nombre)
+        'document.Load(ruta + nombre)
         Dim root As XmlNode = document.DocumentElement
         Dim xmlManager = New XmlNamespaceManager(document.NameTable)
         xmlManager.AddNamespace("cfdi", "http://www.sat.gob.mx/cfd/3")
@@ -287,10 +305,12 @@ Public Class CargarXml
         Console.WriteLine(totalExento)
     End Sub
 
-    Public Sub percepcion()
+    Public Sub percepcion(ByVal ruta As String, ByVal fecha As String, ByVal nombre As String)
+        'Public Sub percepcion(ByVal ruta As String, ByVal nombre As String)
         Dim xmlManager As XNamespace = "http://www.sat.gob.mx/cfd/3"
         Dim xmlNomina As XNamespace = "http://www.sat.gob.mx/nomina12"
-        Dim archivoXml As XDocument = XDocument.Load("C:\Users\Daniel\Downloads\xmles\XMLFILE.xml")
+        Dim archivoXml As XDocument = XDocument.Load(ruta + fecha + "\" + nombre)
+        'Dim archivoXml As XDocument = XDocument.Load(ruta + nombre)
         Dim cont As Integer = 0
         For Each per As XElement In archivoXml.Descendants(xmlManager + "Comprobante").Elements(xmlManager + "Complemento").Elements(xmlNomina + "Nomina").Elements(xmlNomina + "Percepciones").Elements(xmlNomina + "Percepcion")
             Dim tipoPercepcion As String = per.Attribute("TipoPercepcion").Value
@@ -304,11 +324,13 @@ Public Class CargarXml
 
     End Sub
 
-    Public Sub deducciones()
+    Public Sub deducciones(ByVal ruta As String, ByVal fecha As String, ByVal nombre As String)
+        'Public Sub deducciones(ByVal ruta As String, ByVal nombre As String)
         Dim totalOtrasDeducciones As Decimal = 0.0
         Dim totalImpuestosRetenidos As Decimal = 0.0
         Dim document As XmlDocument = New XmlDocument
-        document.Load("C:\Users\Daniel\Downloads\xmles\XMLFILE.xml")
+        document.Load(ruta + fecha + "\" + nombre)
+        'document.Load(ruta + nombre)
         Dim root As XmlNode = document.DocumentElement
         Dim xmlManager = New XmlNamespaceManager(document.NameTable)
         xmlManager.AddNamespace("cfdi", "http://www.sat.gob.mx/cfd/3")
@@ -319,10 +341,12 @@ Public Class CargarXml
         Console.WriteLine(totalImpuestosRetenidos)
     End Sub
 
-    Public Sub deduccion()
+    Public Sub deduccion(ByVal ruta As String, ByVal fecha As String, ByVal nombre As String)
+        'Public Sub deduccion(ByVal ruta As String, ByVal nombre As String)
         Dim xmlManager As XNamespace = "http://www.sat.gob.mx/cfd/3"
         Dim xmlNomina As XNamespace = "http://www.sat.gob.mx/nomina12"
-        Dim archivoXml As XDocument = XDocument.Load("C:\Users\Daniel\Downloads\xmles\XMLFILE.xml")
+        Dim archivoXml As XDocument = XDocument.Load(ruta + fecha + "\" + nombre)
+        'Dim archivoXml As XDocument = XDocument.Load(ruta + nombre)
         Dim cont As Integer = 0
         For Each ded As XElement In archivoXml.Descendants(xmlManager + "Comprobante").Elements(xmlManager + "Complemento").Elements(xmlNomina + "Nomina").Elements(xmlNomina + "Deducciones").Elements(xmlNomina + "Deduccion")
             Dim tipoDeduccion As String = ded.Attribute("TipoDeduccion").Value
